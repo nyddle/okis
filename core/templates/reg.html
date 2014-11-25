@@ -22,6 +22,24 @@
 
             <h3><b>Шаг 1 из 5</b> &raquo; Выбор раздела бесплатных шаблонов</h3>
             <table class="tpltable">
+<!--
+            {% for k, v in themes.items %}
+                <tr align="center">
+                    <td><a href='reg.30.111.html'>{{ v }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
+                    <td><a href='reg.31.111.html'>{{ v2 }}(19) <br><img src='/shablons/352/index.jpg' border='0'><br></a></td>
+                    <td><a href='reg.41.111.html'>{{ v3 }}(19) <br><img src='/shablons/442/index.jpg' border='0'><br></a></td>
+                </tr>
+            {% endfor %}
+--!>
+            {% for r in table %}
+                <tr align="center">
+                {% for d in r %}
+                        <td><a href='reg.30.111.html'>{{ themes | get_item:d }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+
+<!--
             <tr align="center">
                 <td><a href='reg.30.111.html'>Автомобили (11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
                 <td><a href='reg.31.111.html'>Бизнес, финансы (19) <br><img src='/shablons/352/index.jpg' border='0'><br></a></td>
@@ -42,6 +60,7 @@
                 <td><a href='reg.34.111.html'>Спорт, здоровье (21) <br><img src='/shablons/358/index.jpg' border='0'><br></a></td>
                 <td><a href='reg.35.111.html'>Туризм (11) <br><img src='/shablons/369/index.jpg' border='0'><br></a></td>
             </tr>
+--!>
             </table><br/>
             <p>Вы всегда сможете изменить оформление или создать свой уникальный дизайн.</p>
 </div></div>

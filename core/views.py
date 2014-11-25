@@ -11,10 +11,16 @@ from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
 from .models import OkisTemplate, OKIS_THEMES
 
+from django.template.defaulttags import register
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
+
 
 class ThemesView(View):
 
     def get(self, request):
-        return render(request, 'reg.html', {'themes': OKIS_THEMES })
+        return render(request, 'reg.html', {'themes': OKIS_THEMES, 'table' : [ ['auto', 'business', 'computers'], ['sport',] ] })
 
 

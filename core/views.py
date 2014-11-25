@@ -21,6 +21,9 @@ def get_item(dictionary, key):
 class ThemesView(View):
 
     def get(self, request):
-        return render(request, 'reg.html', {'themes': OKIS_THEMES, 'table' : [ ['auto', 'business', 'computers'], ['sport',] ] })
+        return render(request, 'choose_theme.html', {'themes': OKIS_THEMES, 'table' : [ ['auto', 'business', 'computers'], ['sport',] ] })
+
+class OkisTemplateListView(ListView):
+    model = OkisTemplate
 
 

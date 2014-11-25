@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'okis.views.home', name='home'),
     url(r'^', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^reg', TemplateView.as_view(template_name='reg.html'), name='home'),
 )

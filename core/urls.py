@@ -11,6 +11,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^choose_theme/$', ThemesView.as_view(), name='choose_theme'),
-    url(r'^choose_template/$', OkisTemplateListView.as_view(), name='choose_template'),
+    url(r'^choose_template/(?P<theme>\w+)/$', OkisTemplateListView.as_view(), name='choose_template'),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 )

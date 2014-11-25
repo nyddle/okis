@@ -25,5 +25,6 @@ class ThemesView(View):
 
 class OkisTemplateListView(ListView):
     model = OkisTemplate
+    template_name = 'choose_template.html'
 
 

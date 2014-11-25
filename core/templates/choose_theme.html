@@ -25,7 +25,7 @@
             {% for r in table %}
                 <tr align="center">
                 {% for d in r %}
-                        <td><a href='/choose_template/'{{ d }}>{{ themes | get_item:d }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
+                        <td><a href='/choose_template/{{ d }}'>{{ themes | get_item:d }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
                 {% endfor %}
                 </tr>
             {% endfor %}

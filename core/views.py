@@ -27,4 +27,10 @@ class OkisTemplateListView(ListView):
     model = OkisTemplate
     template_name = 'choose_template.html'
 
+    def get(self, request, theme):
+        try:
+            templates = OkisTemplate.objects.get(theme=theme)
+        except OkisTemplate.DoesNotExist:
+            raise Http404
+        return render(request, 'choose_template.html', templates=templates)
 

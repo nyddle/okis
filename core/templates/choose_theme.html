@@ -22,45 +22,13 @@
 
             <h3><b>Шаг 1 из 5</b> &raquo; Выбор раздела бесплатных шаблонов</h3>
             <table class="tpltable">
-<!--
-            {% for k, v in themes.items %}
-                <tr align="center">
-                    <td><a href='reg.30.111.html'>{{ v }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
-                    <td><a href='reg.31.111.html'>{{ v2 }}(19) <br><img src='/shablons/352/index.jpg' border='0'><br></a></td>
-                    <td><a href='reg.41.111.html'>{{ v3 }}(19) <br><img src='/shablons/442/index.jpg' border='0'><br></a></td>
-                </tr>
-            {% endfor %}
---!>
             {% for r in table %}
                 <tr align="center">
                 {% for d in r %}
-                        <td><a href='reg.30.111.html'>{{ themes | get_item:d }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
+                        <td><a href='/choose_template/'{{ d }}>{{ themes | get_item:d }}(11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
                 {% endfor %}
                 </tr>
             {% endfor %}
-
-<!--
-            <tr align="center">
-                <td><a href='reg.30.111.html'>Автомобили (11) <br><img src='/shablons/467/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.31.111.html'>Бизнес, финансы (19) <br><img src='/shablons/352/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.41.111.html'>Досуг, отдых (19) <br><img src='/shablons/442/index.jpg' border='0'><br></a></td>
-            </tr>
-            <tr align="center">
-                <td><a href='reg.40.111.html'>Компьютеры  (24) <br><img src='/shablons/446/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.32.111.html'>Кулинария (15) <br><img src='/shablons/393/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.37.111.html'>Мебель, интерьер (14) <br><img src='/shablons/447/index.jpg' border='0'><br></a></td>
-            </tr>
-            <tr align="center">
-                <td><a href='reg.42.111.html'>На все случаи (31) <br><img src='/shablons/349/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.36.111.html'>Недвижимость (10) <br><img src='/shablons/428/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.33.111.html'>Образование (15) <br><img src='/shablons/377/index.jpg' border='0'><br></a></td>
-            </tr>
-                <tr align="center">
-                <td><a href='reg.39.111.html'>Природа  (25) <br><img src='/shablons/350/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.34.111.html'>Спорт, здоровье (21) <br><img src='/shablons/358/index.jpg' border='0'><br></a></td>
-                <td><a href='reg.35.111.html'>Туризм (11) <br><img src='/shablons/369/index.jpg' border='0'><br></a></td>
-            </tr>
---!>
             </table><br/>
             <p>Вы всегда сможете изменить оформление или создать свой уникальный дизайн.</p>
 </div></div>

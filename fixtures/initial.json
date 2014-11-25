@@ -1,0 +1,12 @@
+[
+  {
+    "model": "core.okistemplate",
+    "pk": 1,
+    "fields": {
+        "name" : "first template",
+        "html"  : "dsvsdv.html",
+        "css"  : "dsvsdv.css",
+        "theme"  : "auto"
+    }
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "model": "core.okissite",
+    "pk": 1,
+    "fields": {
+        "name" : "taken",
+        "owner"  : "somebody"
+    }
+  }
+]

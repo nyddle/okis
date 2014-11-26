@@ -15,4 +15,7 @@ class OkisTemplate(models.Model):
     css  = models.CharField(max_length=200)
     theme = models.CharField(max_length=200)
 
+class OkisSite(models.Model):
+    name = models.CharField(max_length=200)
+    owner = models.CharField(max_length=200)
 

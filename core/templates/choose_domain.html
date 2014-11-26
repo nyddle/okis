@@ -15,13 +15,22 @@
 </div>
 
 <h1>Пошаговое создание сайта</h1><div id='df'>          <h3><b>Шаг 2 из 5</b> &raquo; Выбор бесплатного доменного имени</h3>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send message" />
+</form>
+
+<!--
             <form action="{% url 'choose_domain' %}" method="get">
             {% csrf_token %}
             <input type='hidden' name='reg_shablon' value='480'>
-            <div class="domain">http://www. <input type="text" name='r_domen' value='my-domain' maxlength="14"> .okis.ru</div>
+            <div class="domain">http://www. <input id="domain" type="text" name="domain" value='my-domain' maxlength="14"> .okis.ru</div>
+            {{ form }}
             <input type="submit" value='Перейти к следующему шагу &raquo;' style='padding:3px'>
             </form>
 
+--!>
 </div></div>
 </div>
 <div id="footer-ghost">

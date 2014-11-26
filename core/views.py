@@ -6,7 +6,7 @@ from django.views.generic import View, ListView
 from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
 from .models import OkisTemplate, OKIS_THEMES
-from .forms import ChooseDomainForm
+from .forms import ChooseDomainForm, ChooseEmailForm
 
 from django.template.defaulttags import register
 
@@ -34,6 +34,14 @@ class OkisTemplateListView(ListView):
 class ChooseDomainView(FormView):
     template_name = 'choose_domain.html'
     form_class = ChooseDomainForm
+    success_url = '/register'
+
+    def form_valid(self, form):
+        return super(ChooseDomainView, self).form_valid(form)
+
+class ChooseEmailView(FormView):
+    template_name = 'choose_email.html'
+    form_class = ChooseEmailForm
     success_url = '/register'
 
     def form_valid(self, form):

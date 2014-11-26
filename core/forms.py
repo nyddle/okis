@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from django.forms import Form
+from django.core.exceptions import ValidationError
 
 from core.models import OkisTemplate, OkisSite
 
@@ -12,6 +13,4 @@ class ChooseDomainForm(Form):
         if OkisSite.objects.filter(name=domain).exists():
             raise ValidationError("Domain already exists")
 
-        # Always return the cleaned data, whether you have changed it or
-        # not.
         return domain

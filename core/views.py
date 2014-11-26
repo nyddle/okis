@@ -36,7 +36,6 @@ class ChooseDomainView(FormView):
     form_class = ChooseDomainForm
     success_url = '/register'
 
-
     def form_valid(self, form):
         return super(ChooseDomainView, self).form_valid(form)
 

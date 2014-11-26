@@ -17,17 +17,30 @@ class ChooseDomainForm(Form):
         return domain
 
 class ChooseEmailForm(Form):
-    email = forms.CharField(label='Your email', max_length=100)
-    confirm_email = forms.CharField(label='Confirm email', max_length=100)
+    email = forms.EmailField(label='Your email', max_length=100)
+    confirm_email = forms.EmailField(label='Confirm email', max_length=100)
 
     def clean_email(self):
-        email = self.cleaned_data['email']
-        email2 = self.cleaned_data['confirm_email']
-        #TODO: check if email exists
-        #TODO: check if email is valid
-        """
-        if OkisSite.objects.filter(name=domain).exists():
-            raise ValidationError("Domain already exists")
-        """
-        return email
+
+        if 'email' in self.cleaned_data:
+            email = self.cleaned_data['email']
+            #TODO: check if email exists
+            """
+            if OkisSite.objects.filter(name=domain).exists():
+                raise ValidationError("Domain already exists")
+            """
+            return email
+        else:
+            raise ValidationError("Invalid email address.")
+
+    def clean(self):
+        form_data = self.cleaned_data
+
+        if ('email' not in form_data) or ('confirm_email' not in form_data):
+            raise ValidationError("Invalid email address.")
+
+        if form_data['email'] != form_data['confirm_email']:
+            self._errors["email"] = ["Emails do not match"] # Will raise a error message
+            del form_data['confirm_email']
+        return form_data
 

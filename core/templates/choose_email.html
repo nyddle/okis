@@ -15,6 +15,12 @@
 </div>
 
 <h1>Пошаговое создание сайта</h1><div id='df'>          <h3><b>Шаг 3 из 5</b> &raquo; Ввод персональных данных</h3>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send message" />
+</form>
+
+<!--
                         <form method='POST' action='reg..31.html'>
             <input type='hidden' name='reg_domen' value='ddddee'>
             <input type='hidden' name='reg_shablon' value='480'>
@@ -29,15 +35,11 @@
                 <td><input type="text" name='email2' size='20' maxlength='50' value=''></td>
                 <td>Проверка верности написания емэйл адреса.</td>
             </tr>
-            <!--tr>
-                <td width="110"><b>Сколько букв в слове ОКИС?</b></td>
-                <td><input type="text" name='captcha' size='20' maxlength='50' value=''></td>
-                <td>Введите ответ для защиты от автоматических регистраций.</td>
-            </tr-->
             </table><br>
             <br>
             <input type="submit" value='Перейти к следующему шагу &raquo;' style='padding:3px'>
             </form>
+--!>
 </div></div>
 </div>
 <div id="footer-ghost">

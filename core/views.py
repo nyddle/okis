@@ -1,15 +1,12 @@
 from django.shortcuts import render
 
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
-
 from django.http import Http404
-from django.http import HttpResponseNotFound
 
-from django.views.generic import View
-from django.views.generic import ListView
+from django.views.generic import View, ListView
 from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
 from .models import OkisTemplate, OKIS_THEMES
+from .forms import ChooseDomainForm
 
 from django.template.defaulttags import register
 
@@ -29,8 +26,20 @@ class OkisTemplateListView(ListView):
 
     def get(self, request, theme):
         try:
-            templates = OkisTemplate.objects.get(theme=theme)
+            templates = OkisTemplate.objects.filter(theme=theme)
         except OkisTemplate.DoesNotExist:
             raise Http404
-        return render(request, 'choose_template.html', templates=templates)
+        return render(request, 'choose_template.html', { 'templates' : templates })
+
+class ChooseDomainView(FormView):
+    template_name = 'choose_domain.html'
+    form_class = ChooseDomainForm
+    success_url = '/register'
+
+    def form_valid(self, form):
+        form.save()
+        return super(ChooseDomainView, self).form_valid(form)
+
+
+
 

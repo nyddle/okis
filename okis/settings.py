@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1 # create in response to sites framework error caught with allauth
 
 # Application definition
 
@@ -36,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
     'okis',
     'core',
 )
@@ -51,7 +54,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.contrib.auth.context_processors.auth",
     "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount",
+    #"allauth.socialaccount.context_processors.socialaccount",
 )
 
 MIDDLEWARE_CLASSES = (

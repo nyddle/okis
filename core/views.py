@@ -18,26 +18,26 @@ def get_item(dictionary, key):
 class ThemesView(View):
 
     def get(self, request):
-        return render(request, 'choose_theme.html', {'themes': OKIS_THEMES, 'table' : [ ['auto', 'business', 'computers'], ['sport',] ] })
+        return render(request, 'core/choose_theme.html', {'themes': OKIS_THEMES, 'table' : [ ['auto', 'business', 'computers'], ['sport',] ] })
 
 class OkisTemplateListView(ListView):
     model = OkisTemplate
-    template_name = 'choose_template.html'
+    template_name = 'core/choose_template.html'
 
     def get(self, request, theme):
         try:
             templates = OkisTemplate.objects.filter(theme=theme)
         except OkisTemplate.DoesNotExist:
             raise Http404
-        return render(request, 'choose_template.html', { 'templates' : templates })
+        return render(request, 'core/choose_template.html', { 'templates' : templates })
 
 class ChooseDomainView(FormView):
-    template_name = 'choose_domain.html'
+    template_name = 'core/choose_domain.html'
     form_class = ChooseDomainForm
     success_url = '/register'
 
 class ChooseEmailView(FormView):
-    template_name = 'choose_email.html'
+    template_name = 'core/choose_email.html'
     form_class = ChooseEmailForm
     success_url = '/register'
 

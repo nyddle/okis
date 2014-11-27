@@ -36,16 +36,10 @@ class ChooseDomainView(FormView):
     form_class = ChooseDomainForm
     success_url = '/register'
 
-    def form_valid(self, form):
-        return super(ChooseDomainView, self).form_valid(form)
-
 class ChooseEmailView(FormView):
     template_name = 'choose_email.html'
     form_class = ChooseEmailForm
     success_url = '/register'
-
-    def form_valid(self, form):
-        return super(ChooseEmailView, self).form_valid(form)
 
 
 

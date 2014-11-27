@@ -25,10 +25,8 @@ class ChooseEmailForm(Form):
         if 'email' in self.cleaned_data:
             email = self.cleaned_data['email']
             #TODO: check if email exists
-            """
-            if OkisSite.objects.filter(name=domain).exists():
-                raise ValidationError("Domain already exists")
-            """
+            #if OkisSite.objects.filter(name=domain).exists():
+            #    raise ValidationError("Domain already exists")
             return email
         else:
             raise ValidationError("Invalid email address.")

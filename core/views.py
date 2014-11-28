@@ -7,12 +7,33 @@ from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
 from .models import OkisTemplate, OKIS_THEMES
 from .forms import ChooseDomainForm, ChooseEmailForm
+#from .forms import SignupForm as MySignupForm
+from .forms import MySignupForm
 
 from django.template.defaulttags import register
 
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+
+import account.forms
+import account.views
+
+
+class LoginView(account.views.LoginView):
+
+    form_class = account.forms.LoginEmailForm
+
+class MySignupView(account.views.SignupView):
+
+    form_class = MySignupForm
+
+    def generate_username(self, form):
+        # do something to generate a unique username (required by the
+        # Django User model, unfortunately)
+        username = "<magic>"
+        return username
 
 
 class ThemesView(View):
@@ -47,8 +68,8 @@ class ChooseEmailView(FormView):
             form = ChooseEmailForm(request.POST)
             # check whether it's valid:
             if form.is_valid():
-                user = User.objects.create_user(email, email=email)
-                send_email(email, 'Use %s to confirm your email' % user.confirmation_key)
+                #user = User.objects.create_user(email, email=email)
+                #send_email(email, 'Use %s to confirm your email' % user.confirmation_key)
                 return HttpResponseRedirect('/thanks/')
         else:
             form = ChooseEmailForm()

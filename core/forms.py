@@ -5,6 +5,19 @@ from django.core.exceptions import ValidationError
 
 from core.models import OkisTemplate, OkisSite
 
+import account.forms
+
+
+class MySignupForm(account.forms.SignupForm):
+
+    def __init__(self, *args, **kwargs):
+        print("DELETE USERNAME")
+        super(SignupForm, self).__init__(*args, **kwargs)
+        print("DELETE USERNAME")
+        del self.fields["username"]
+
+
+
 class ChooseDomainForm(Form):
     domain = forms.CharField(label='Your domain', max_length=100)
 

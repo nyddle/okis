@@ -50,6 +50,10 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
+AUTHENTICATION_BACKENDS = [
+    "account.auth_backends.EmailAuthenticationBackend",
+]
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -101,6 +105,7 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 # ACCOUNT SETTINGS
-
+CCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = 1
+ACCOUNT_USER_DISPLAY = lambda user: user.email
 

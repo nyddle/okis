@@ -41,7 +41,6 @@ class ChooseEmailView(FormView):
     form_class = ChooseEmailForm
     success_url = '/register'
 
-
     def get(self, request):
         if request.method == 'POST':
             # create a form instance and populate it with data from the request:
@@ -49,7 +48,9 @@ class ChooseEmailView(FormView):
             # check whether it's valid:
             if form.is_valid():
                 user = User.objects.create_user(email, email=email)
+                send_email(email, 'Use %s to confirm your email' % user.confirmation_key)
                 return HttpResponseRedirect('/thanks/')
         else:
             form = ChooseEmailForm()
             return render(request, 'core/choose_email.html', {'form': form})
+

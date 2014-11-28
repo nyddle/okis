@@ -25,7 +25,7 @@ class LoginView(account.views.LoginView):
 
     form_class = account.forms.LoginEmailForm
 
-class MySignupView(account.views.SignupView):
+class SignupView(account.views.SignupView):
 
     form_class = MySignupForm
 

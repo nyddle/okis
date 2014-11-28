@@ -3,12 +3,13 @@ from django.shortcuts import render_to_response
 
 from django.views.generic.base import TemplateView
 
-from .views import ThemesView, OkisTemplateListView, ChooseDomainView, ChooseEmailView
+from .views import ThemesView, OkisTemplateListView, ChooseDomainView, ChooseEmailView, SignupView
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^account/signup/$', SignupView.as_view(), name='signup'),
     url(r"^account/", include("account.urls")),
     url(r'^choose_theme/$', ThemesView.as_view(), name='choose_theme'),
     url(r'^choose_template/(?P<theme>\w+)/$', OkisTemplateListView.as_view(), name='choose_template'),

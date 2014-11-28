@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 from core.models import OkisTemplate, OkisSite
 
-import account.forms
+from account.forms import SignupForm
 
 
 class MySignupForm(account.forms.SignupForm):

@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 from core.models import OkisTemplate, OkisSite
 
+import account
 from account.forms import SignupForm
 
 
@@ -15,6 +16,8 @@ class MySignupForm(account.forms.SignupForm):
         super(SignupForm, self).__init__(*args, **kwargs)
         print("DELETE USERNAME")
         del self.fields["username"]
+        del self.fields["password"]
+        del self.fields["password_confirm"]
 
 
 

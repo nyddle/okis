@@ -12,9 +12,7 @@ from account.forms import SignupForm
 class MySignupForm(account.forms.SignupForm):
 
     def __init__(self, *args, **kwargs):
-        print("DELETE USERNAME")
         super(SignupForm, self).__init__(*args, **kwargs)
-        print("DELETE USERNAME")
         del self.fields["username"]
         del self.fields["password"]
         del self.fields["password_confirm"]

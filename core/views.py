@@ -32,7 +32,7 @@ class SignupView(account.views.SignupView):
     def generate_username(self, form):
         # do something to generate a unique username (required by the
         # Django User model, unfortunately)
-        username = "<magic>"
+        username = form.fields['email']
         return username
 
 

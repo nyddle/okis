@@ -39,7 +39,7 @@ class ChooseDomainView(FormView):
     def get(self, request):
         request.session['theme'] = request.GET['theme']
         request.session['template'] = request.GET['template']
-        return super(ChooseDomainView, self).get(request)
+        return super().get(request)
 
 class ChooseEmailView(FormView):
     template_name = 'core/choose_email.html'

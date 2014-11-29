@@ -22,11 +22,11 @@ class ThemesView(View):
 
 class OkisTemplateListView(ListView):
     model = OkisTemplate
-    template_name = 'core/choose_template.html'
 
     def get(self, request, theme):
         try:
             templates = OkisTemplate.objects.filter(theme=theme)
+            request.session['theme'] = theme
         except OkisTemplate.DoesNotExist:
             raise Http404
         return render(request, 'core/choose_template.html', { 'templates' : templates })
@@ -34,7 +34,12 @@ class OkisTemplateListView(ListView):
 class ChooseDomainView(FormView):
     template_name = 'core/choose_domain.html'
     form_class = ChooseDomainForm
-    success_url = '/register'
+    success_url = '/choose_email'
+
+    def get(self, request):
+        request.session['theme'] = request.GET['theme']
+        request.session['template'] = request.GET['template']
+        return super(ChooseDomainView, self).get(request)
 
 class ChooseEmailView(FormView):
     template_name = 'core/choose_email.html'

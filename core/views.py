@@ -35,7 +35,6 @@ class SignupView(account.views.SignupView):
         username = form.fields['email']
         return username
 
-
 class ThemesView(View):
 
     def get(self, request):
@@ -55,28 +54,14 @@ class OkisTemplateListView(ListView):
 class ChooseDomainView(FormView):
     template_name = 'core/choose_domain.html'
     form_class = ChooseDomainForm
-    success_url = '/choose_email'
+    success_url = '/account/signup/'
 
     def get(self, request):
         request.session['theme'] = request.GET['theme']
         request.session['template'] = request.GET['template']
         return super().get(request)
 
-class ChooseEmailView(FormView):
-    template_name = 'core/choose_email.html'
-    form_class = ChooseEmailForm
-    success_url = '/register'
-
-    def get(self, request):
-        if request.method == 'POST':
-            # create a form instance and populate it with data from the request:
-            form = ChooseEmailForm(request.POST)
-            # check whether it's valid:
-            if form.is_valid():
-                #user = User.objects.create_user(email, email=email)
-                #send_email(email, 'Use %s to confirm your email' % user.confirmation_key)
-                return HttpResponseRedirect('/thanks/')
-        else:
-            form = ChooseEmailForm()
-            return render(request, 'core/choose_email.html', {'form': form})
+    def post(self, request):
+        request.session['domain'] = request.POST['domain']
+        return super().post(request)
 

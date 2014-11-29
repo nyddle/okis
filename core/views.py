@@ -12,6 +12,8 @@ from .forms import MySignupForm
 
 from django.template.defaulttags import register
 
+from account.models import SignupCode, EmailAddress, EmailConfirmation, Account, AccountDeletion, EmailAddressManager
+
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
@@ -28,6 +30,16 @@ class LoginView(account.views.LoginView):
 class SignupView(account.views.SignupView):
 
     form_class = MySignupForm
+
+    def get(self, request):
+        #AccountDeletion.mark(Account.filter(user='nyddle@gmail.com'))
+        emails = EmailAddressManager()
+        allemails = emails.all()
+        email = EmailAddress.objects.get(email='nyddle@gmail.com')
+        #acc = Account.objects.get(email='nyddle@gmail.com')
+        print(dir(allemails))
+        #EmailAddressManager().get_queryset().filter(email='nyddle@gmail.com')
+        return super().get(request)
 
     def generate_username(self, form):
         # do something to generate a unique username (required by the
@@ -62,6 +74,7 @@ class ChooseDomainView(FormView):
         return super().get(request)
 
     def post(self, request):
+        #TODO: verify domain name
         request.session['domain'] = request.POST['domain']
         return super().post(request)
 

@@ -5,10 +5,8 @@ from django.http import Http404
 from django.views.generic import View, ListView
 from django.views.generic.edit import FormView, ProcessFormView, CreateView
 
-from .models import OkisTemplate, OKIS_THEMES
-from .forms import ChooseDomainForm, ChooseEmailForm
-#from .forms import SignupForm as MySignupForm
-from .forms import MySignupForm
+from .models import OkisTemplate, OKIS_THEMES, OkisSite
+from .forms import ChooseDomainForm, ChooseEmailForm, MySignupForm
 
 from django.template.defaulttags import register
 
@@ -35,6 +33,19 @@ class SignupView(account.views.SignupView):
         username = form.fields['email']
         return username
 
+    def after_signup(self, form):
+        theme = self.request.session.get('theme')
+        template = self.request.session.get('template')
+        template_id = self.request.session.get('template_id')
+        domain = self.request.session.get('domain')
+
+        okis_template = OkisTemplate.objects.get(pk=template_id)
+        #okis_site = OkisSite.objects.create(owner=self.request.user, template=okis_template, name=domain)
+        okis_site = OkisSite.objects.create(owner_email=form.fields['email'], template=okis_template, name=domain)
+        okis_site.save()
+        super().after_signup(form)
+
+
 class ThemesView(View):
 
     def get(self, request):
@@ -59,6 +70,7 @@ class ChooseDomainView(FormView):
     def get(self, request):
         request.session['theme'] = request.GET['theme']
         request.session['template'] = request.GET['template']
+        request.session['template_id'] = request.GET['template_id']
         return super().get(request)
 
     def post(self, request):

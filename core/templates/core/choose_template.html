@@ -23,7 +23,7 @@
 {% for template in templates %}
 
 <h1>{{ template.name  }}</h1>
-<td><a href='/choose_domain?theme=auto&template={{ template.name }}'><img src='/shablons/352/index.jpg'></a><br><a href='/shablons/352/big.jpg' target='_blank'>увеличить</a> / <a href='reg.352.1111.html' style='font-weight:bold'>выбрать</a></td>
+<td><a href='/choose_domain?theme=auto&template={{ template.name }}&template_id={{ template.id }}'><img src='/shablons/352/index.jpg'></a><br><a href='/shablons/352/big.jpg' target='_blank'>увеличить</a> / <a href='reg.352.1111.html' style='font-weight:bold'>выбрать</a></td>
 
 {% endfor %}
 <!--

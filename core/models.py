@@ -1,5 +1,5 @@
 from django.db import models
-
+#from django.contrib.auth.models import User
 
 OKIS_THEMES = {
     'auto' : u'Автомобили',
@@ -16,5 +16,9 @@ class OkisTemplate(models.Model):
 
 class OkisSite(models.Model):
     name = models.CharField(max_length=200)
-    owner = models.CharField(max_length=200)
+    #TODO connect with Account or django User
+    #owner = models.ForeignKey(User)
+    template = models.ForeignKey(OkisTemplate)
+    owner_email = models.CharField(max_length=200)
+
 

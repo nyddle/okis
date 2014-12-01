@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'core', 'templates'),
     os.path.join(BASE_DIR, 'useradmin', 'templates'),
+    os.path.join(BASE_DIR, 'usersite', 'templates'),
 )
 
 ALLOWED_HOSTS = []

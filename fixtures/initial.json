@@ -11,7 +11,7 @@
   },
   {
     "model": "core.okistemplate",
-    "pk": 1,
+    "pk": 2,
     "fields": {
         "name" : "second template",
         "html"  : "dsvsdv.html",

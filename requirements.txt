@@ -1,2 +1,13 @@
 Django==1.7.1
+defusedxml==0.4.1
+django-allauth==0.18.0
+django-appconf==0.6
 django-registration-redux==1.1
+django-simple-email-confirmation==0.11
+django-user-accounts==1.0
+oauthlib==0.7.2
+python3-openid==3.0.5
+pytz==2014.10
+requests==2.4.3
+requests-oauthlib==0.4.2
+six==1.8.0

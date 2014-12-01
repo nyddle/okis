@@ -42,7 +42,6 @@ class SignupView(account.views.SignupView):
         okis_template = OkisTemplate.objects.get(pk=template_id)
         #okis_site = OkisSite.objects.create(owner=self.request.user, template=okis_template, name=domain)
         okis_site = OkisSite.objects.create(owner_email=form.fields['email'], template=okis_template, name=domain)
-        okis_site.save()
         super().after_signup(form)
 
 

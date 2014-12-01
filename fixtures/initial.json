@@ -5,8 +5,19 @@
     "fields": {
         "name" : "first template",
         "html"  : "dsvsdv.html",
-        "css"  : "dsvsdv.css",
+        "css"  : "first.css",
+        "theme"  : "auto"
+    }
+  },
+  {
+    "model": "core.okistemplate",
+    "pk": 1,
+    "fields": {
+        "name" : "second template",
+        "html"  : "dsvsdv.html",
+        "css"  : "second.css",
         "theme"  : "auto"
     }
   }
+
 ]

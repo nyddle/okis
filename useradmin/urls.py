@@ -8,9 +8,9 @@ from .views import UserAdminView
 
 urlpatterns = patterns('',
     #url(r'^', UserAdminView.as_view(), name='useradmin'),
-    url(r'^', TemplateView.as_view(template_name='useradmin/index.html'), name='useradmin.index'),
     url(r'^menu', TemplateView.as_view(template_name='useradmin/menu.html'), name='menu'),
     url(r'^pages', TemplateView.as_view(template_name='useradmin/pages.html'), name='pages'),
     url(r'^photo', TemplateView.as_view(template_name='useradmin/photo.html'), name='photo'),
+    url(r'^', TemplateView.as_view(template_name='useradmin/index.html'), name='useradmin.index'),
 )
 
